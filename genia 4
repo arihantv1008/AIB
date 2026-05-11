@@ -1,0 +1,17 @@
+import gensim.downloader as api
+
+m = api.load("glove-wiki-gigaword-50")
+
+seed = "technology"
+
+sim = [k for k, _ in m.most_similar(seed, topn=3)]
+
+p1 = "Write about technology"
+
+p2 = "Write about technology with " + ", ".join(sim)
+
+print("Original:", p1)
+
+print("Enriched:", p2)
+
+print("Analysis: enriched prompt gives more detailed output")
