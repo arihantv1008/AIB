@@ -1,0 +1,12 @@
+import gensim.downloader as api
+
+m = api.load("glove-wiki-gigaword-50")
+
+seed = "king"
+
+words = [k for k, _ in m.most_similar(seed, topn=5)]
+
+print("Words:", words)
+
+print("Sentence:",
+      "A story about " + ", ".join(words))
