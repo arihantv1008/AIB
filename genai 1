@@ -1,0 +1,16 @@
+# Pre-trained vectors + arithmetic + analysis
+
+import gensim.downloader as api
+
+m = api.load("glove-wiki-gigaword-50")
+
+# Most similar words
+positive = ['king', 'woman']
+negative = ['man']
+
+r = m.most_similar(positive=positive, negative=negative, topn=5)
+
+print("Result:", r)
+
+# Word relationship analysis
+print("Analysis: king - man + woman = queen (gender relationship)")
