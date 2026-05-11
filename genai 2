@@ -1,0 +1,31 @@
+# Visualization + Similar Words
+
+import gensim.downloader as api
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+
+m = api.load("glove-wiki-gigaword-50")
+
+words = [
+    "cricket", "football", "tennis",
+    "bat", "ball", "goal",
+    "team", "player", "match", "score"
+]
+
+# Get vectors for words
+vec = [m[w] for w in words]
+
+# Reduce dimensions from 50D to 2D
+p = PCA(n_components=2).fit_transform(vec)
+
+# Plot words
+plt.scatter(p[:,0], p[:,1])
+
+for i, w in enumerate(words):
+    plt.text(p[i,0], p[i,1], w)
+
+plt.show()
+
+print("Similarity:", m.most_similar("cricket", topn=5))
+
+print("Analysis: Sports words cluster together")
