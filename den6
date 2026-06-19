@@ -1,0 +1,4 @@
+from transformers import pipeline
+model = pipeline ("sentiment-analysis")
+text = "I love artificial intelligence "
+print(model (text)
