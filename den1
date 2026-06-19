@@ -1,0 +1,19 @@
+import gensim.downloader as api
+
+model = api.load("glove-wiki-gigaword-50")
+
+# Similar words
+print(model.most_similar("king", topn=5))
+
+# Vector arithmetic: king - man + woman = queen
+print(model.most_similar(
+    positive=["king","woman"],
+    negative=["man"],
+    topn=1
+))
+
+# Arithmetic operation
+print(model.similar_by_vector(model["hotel"] * 2, topn=3))
+
+# Analysis
+print(model.similarity("doctor","hospital"))
