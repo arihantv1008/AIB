@@ -1,0 +1,8 @@
+!pip install gensim
+import gensim.downloader as api
+model = api.load("glove-wiki-gigaword-50")
+word="computer"
+similar = model.most_similar (word, topn=5)
+print ("similar words " , similar)
+para = "computer is related to "+", ".join((w[0] for w in similar))
+print (para)
