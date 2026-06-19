@@ -1,0 +1,5 @@
+from gensim.models import Word2Vec
+data= [["doctor","patient","hospital","medicine"],["law","court","judge","lawyer"]]
+model = Word2Vec (data,vector_size=50, min_count = 1)
+print (model.wv.most_similar("doctor"))
+print (model.wv.similarity("doctor","hospital"))
