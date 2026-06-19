@@ -1,0 +1,17 @@
+import gensim.downloader as api
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+
+model = api.load("glove-wiki-gigaword-50")
+
+words = ["football","cricket","tennis","team","player",
+         "coach","goal","match","win","score"]
+
+p = PCA(n_components=2).fit_transform([model[w] for w in words])
+
+plt.scatter(p[:,0], p[:,1])
+for i,w in enumerate(words):
+    plt.text(p[i,0],p[i,1],w)
+plt.show()
+
+print(model.most_similar("football", topn=5))
