@@ -1,0 +1,7 @@
+import gensim.downloader as api 
+model = api.load("glove-wiki-gigaword-50")
+prompt="explain computer"
+words = model.most_similar("computer", topn=3)
+New_prompt = prompt + "with" + str(words)
+print("original :" ,prompt )
+print("enriched:", New_prompt)
